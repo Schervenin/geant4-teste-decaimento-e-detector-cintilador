@@ -1,0 +1,4 @@
+/home/schervenin/geant4-teste-decaimento e detector cintilador/build/CMakeFiles/sim.dir
+/home/schervenin/geant4-teste-decaimento e detector cintilador/build/CMakeFiles/Tutorial.dir
+/home/schervenin/geant4-teste-decaimento e detector cintilador/build/CMakeFiles/edit_cache.dir
+/home/schervenin/geant4-teste-decaimento e detector cintilador/build/CMakeFiles/rebuild_cache.dir
