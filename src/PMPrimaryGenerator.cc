@@ -4,6 +4,7 @@
 #include "G4UnitsTable.hh"
 #include "G4Gamma.hh"
 #include "G4Electron.hh"
+#include <random>
 
 PMPrimaryGenerator::PMPrimaryGenerator()
 {
@@ -13,14 +14,23 @@ PMPrimaryGenerator::PMPrimaryGenerator()
     G4double cylinderHeight = 0.5 * cm;
     G4double cylinderR = 1.0 * cm;
 
-    G4double r = sqrt(CLHEP::RandFlat::shoot(0., 1.0)) * cylinderR; //Raio aleatório
-    G4double phi = CLHEP::RandFlat::shoot(0., 360.0 * deg); //Angulo aleatório
+    // Criar um gerador de números aleatórios
+    std::random_device rd;
+    std::mt19937 gen(rd()); // Mersenne Twister
+    std::uniform_real_distribution<G4double> distRadial(-cylinderR, cylinderR);
+    std::uniform_real_distribution<G4double> distHeight(-cylinderHeight/2, cylinderHeight/2);
 
-    // converte polar para cartesiano
+    // Gerar posição aleatória no plano radial (x, y)
+    G4double x = distRadial(gen);
+    G4double y = distRadial(gen);
+    while (x*x + y*y > cylinderR*cylinderR) {  // Garantir que a posição esteja dentro do círculo
+        x = distRadial(gen);
+        y = distRadial(gen);
+    }
 
-    G4double x = r * cos(phi);
-    G4double y = r * sin(phi);
-    G4double z = CLHEP::RandFlat::shoot(- cylinderHeight / 2, cylinderHeight / 2); // altura em z que a particula vai sair
+    // Gerar altura aleatória (z)
+    G4double z = distHeight(gen);
+    
 
     G4ThreeVector pos(x, y, z);
 
@@ -45,8 +55,8 @@ PMPrimaryGenerator::~PMPrimaryGenerator()
 void PMPrimaryGenerator::GeneratePrimaries(G4Event *anEvent)
 {
     //Particle type
-    G4int Z = 9; //numero de p
-    G4int A = 18; //numero atomico
+    G4int Z = 27; //numero de p
+    G4int A = 60; //numero atomico
 
     G4double charge = 0. * eplus; // carga 
     G4double energy = 0. *keV; // E k zero

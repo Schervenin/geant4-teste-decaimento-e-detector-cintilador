@@ -306,6 +306,15 @@ Qt5OpenGL_DIR:PATH=/usr/lib/x86_64-linux-gnu/cmake/Qt5OpenGL
 Qt5Widgets_DIR:PATH=/usr/lib/x86_64-linux-gnu/cmake/Qt5Widgets
 
 //Value Computed by CMake
+Saci_BINARY_DIR:STATIC=/home/schervenin/geant4-teste-decaimento e detector cintilador/build
+
+//Value Computed by CMake
+Saci_IS_TOP_LEVEL:STATIC=ON
+
+//Value Computed by CMake
+Saci_SOURCE_DIR:STATIC=/home/schervenin/geant4-teste-decaimento e detector cintilador
+
+//Value Computed by CMake
 Tutorial_BINARY_DIR:STATIC=/home/schervenin/geant4-teste-decaimento e detector cintilador/build
 
 //Value Computed by CMake

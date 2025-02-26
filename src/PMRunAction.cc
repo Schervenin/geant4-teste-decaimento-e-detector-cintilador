@@ -4,7 +4,7 @@ PMRunAction::PMRunAction()
 {
     G4AnalysisManager *analysisManager = G4AnalysisManager::Instance();
 
-    analysisManager->CreateH1("Edep", "Energy Deposit", 100, 0., 1.1 *MeV);//cria um histograma com a energia depositada
+    analysisManager->CreateH1("Edep", "Energy Deposit", 100, 0., 2.5 *MeV);//cria um histograma com a energia depositada
 
     //cria as colunas no root
     analysisManager->CreateNtuple("Photons", "Photons");
